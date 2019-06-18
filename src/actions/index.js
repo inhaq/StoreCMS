@@ -1,4 +1,4 @@
-export const CREATE_BOOK = "CREATE_BOOK";
+import {CREATE_BOOK,REMOVE_BOOK,CHANGE_FILTER} from '../constants/actionConstants'
 
 export const createBook = (book) => {
   return {
@@ -8,7 +8,7 @@ export const createBook = (book) => {
   };
 };
 
-export const REMOVE_BOOK = "REMOVE_BOOK";
+
 
 export const removeBook = (book) => {
   return {
@@ -18,7 +18,7 @@ export const removeBook = (book) => {
   };
 };
 
-export const CHANGE_FILTER = "CHANGE_FILTER";
+
 
 export const changeFilter = (category) => {
   return {

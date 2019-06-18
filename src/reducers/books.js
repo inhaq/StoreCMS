@@ -1,4 +1,4 @@
-import {CREATE_BOOK, REMOVE_BOOK} from "../actions";
+import {CREATE_BOOK, REMOVE_BOOK} from "../constants/actionConstants";
 
 export const booksReducer = (state=[], action) => {
   switch (action.type) {

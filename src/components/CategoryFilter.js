@@ -1,5 +1,5 @@
 import React        from 'react';
-import {CATEGORIES} from "../containers/BooksForm";
+import CATEGORIES from "../constants/bookCategories";
 
 const CategoryFilter = (props) => {
   const { onFilterChange } = props;

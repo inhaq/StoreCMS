@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect}          from 'react-redux';
 import { createBook } from '../actions/index';
-
-export const CATEGORIES = ["Action", "Biography", "History", "Horror", "Kids", "Learning", "Sci-Fi"];
+import CATEGORIES from '../constants/bookCategories'
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -61,4 +60,3 @@ export default connect(
   mapDispatchToProps,
 )(BooksForm);
 
-// export default BooksForm;
