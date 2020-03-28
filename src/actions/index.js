@@ -19,7 +19,6 @@ export const removeBook = (book) => {
 };
 
 
-
 export const changeFilter = (category) => {
   return {
     type: CHANGE_FILTER,

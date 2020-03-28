@@ -1,28 +1,9 @@
 import React          from 'react';
-import {connect}      from 'react-redux';
 import Book           from '../components/Book';
-import { removeBook, changeFilter } from '../actions/index';
 import CategoryFilter from "../components/CategoryFilter";
-
-function mapStateToProps(state) {
-  return {books: state.books, filter: state.filter};
-}
-
-const mapDispatchToProps = dispatch => ({
-    remove: (book) => dispatch(removeBook(book)),
-    changeFilter: (filter) => dispatch(changeFilter(filter)),
-});
-
-const BooksList = (props) => {
-  const {books, filter} = props;
-
-  const handleRemoveBook = (book) =>{
-    props.remove(book);
-  };
-
-  const handleFilterChange = (filter) => {
-    props.changeFilter(filter);
-  };
+import useBookList from '../hooks/useBookList'
+export default function BooksList() {
+  const {books,handleFilterChange,handleRemoveBook,filter} = useBookList()
 
   let showBooks = filter === 'All' ? books : books.filter(book => book.category === filter);
 
@@ -37,6 +18,3 @@ const BooksList = (props) => {
 };
 
 
-export default connect(
-  mapStateToProps,mapDispatchToProps
-)(BooksList);

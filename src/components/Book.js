@@ -1,13 +1,12 @@
 import React from "react";
 
-const Book = props => {
-  const { title, category } = props.book;
+export default function Book({book:{title,category},onRemove}) {
   return (
     <div className="singleBook">
     <div className="left">
     <span className="category">{category}</span>
       <span className="title">{title}</span>
-      <button className="remove" onClick={props.onRemove}>Remove</button>
+      <button className="remove" onClick={onRemove}>Remove</button>
     </div>
     <div className="center">
       <div className="progressBar"></div>
@@ -21,6 +20,4 @@ const Book = props => {
     </div>
     </div>
   );
-};
-
-export default Book;
+}; 

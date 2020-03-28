@@ -5,8 +5,7 @@ export const booksReducer = (state=[], action) => {
     case CREATE_BOOK:
       return [...state, action.payload];
     case REMOVE_BOOK:
-      const index = state.findIndex(book => book.id === action.payload.id);
-      return [...state.slice(0, index).concat(state.slice(index + 1))];
+      return [...state.filter(book=>book.id !== action.payload.id)];
     default:
       return state;
   }

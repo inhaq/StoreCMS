@@ -3,7 +3,7 @@ import BooksList      from "../containers/BooksList";
 import BooksForm      from "../containers/BooksForm";
 import Navbar         from "../components/Navbar"
 import                     '../styles/style.css';
-function App() {
+export default function App() {
   return (
     <div>
       <Navbar />
@@ -12,5 +12,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

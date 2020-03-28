@@ -1,62 +1,19 @@
-import React, {Component} from 'react';
-import {connect}          from 'react-redux';
-import { createBook } from '../actions/index';
+import React from 'react';
 import CATEGORIES from '../constants/bookCategories'
+import useBooksForm from '../hooks/useBooksForm'
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createBook: (book) => {
-      dispatch(createBook(book))
-    }
-  };
-};
-
-
-class BooksForm extends Component {
-
-  state = {title: '', category: ''};
-
-  handleChange = (type,val) => {
-    this.setState({
-      [type]: val
-    });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    const {title, category } = this.state;
-    if(title === '' || category === ''){
-      alert('Cant be blank');
-      return;
-    }  
-    this.props.createBook({id: Math.random(),title,category});
-
-    this.setState(() => ({
-      title: '',
-      category: ''
-    }));
-
-  };
-
-  render() {
-    const options = CATEGORIES.map((category) => (<option key={category}>{category}</option>));
+export default function BooksForm () {
+    const {handleChange,handleSubmit,state} = useBooksForm()
     return (
       <form className="formBook">
         <h1 className="addBook">ADD NEW BOOK</h1>
-        <input onChange={e => this.handleChange('title',e.target.value)} value={this.state.title} />
-        <select defaultValue={'DEFAULT'} onChange={e => this.handleChange('category',e.target.value)}>
+        <input onChange={e => handleChange('title',e.target.value)} value={state.title} />
+        <select defaultValue={'DEFAULT'} onChange={e =>handleChange('category',e.target.value)}>
         <option value="DEFAULT" disabled>Select</option>
-          {options}
+          {CATEGORIES.map((category) => (<option key={category}>{category}</option>))}
         </select>
-        <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+        <button onClick={handleSubmit}>Submit</button>
       </form>
     );
-  }
 }
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(BooksForm);
 
